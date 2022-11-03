@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Showtime';
+    src: url("fonts/showtime.ttf");
+}
+
+body {
+	background-color: #B2E9FD;
+}
+
+.header h1 {
+	font-family: 'Showtime';
+	color: #DC4247;
+	margin-top: 10px;
+}
+
+.header p {
+	color: #50524F;
+}
+
+.results {
+	margin-top: 20px;
+}
+
+.movie-title {
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.release-date {
+	padding: 3px;
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+.left-card {
+	margin-right: 220px;
+}
+
+.right-card {
+	margin-left: 220px;
+}
+
+.btn-primary {
+	margin: 2px;
+}
+
+.thumbs-button {
+	border: 0;
+	margin: 0 3px;
+	background-color: white;
+	transition: transform .2s ease-in-out;
+}
+
+.thumbs-button:hover {
+	transform: scale(1.2);
+}
+
+.thumbs-up {
+	background-image: url("images/thumbs-up.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+
+.thumbs-up-rated {
+	background-image: url("images/thumbs-up-rated.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+
+.thumbs-down {
+	background-image: url("images/thumbs-down.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+
+.thumbs-down-rated {
+	background-image: url("images/thumbs-down-rated.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+
+
