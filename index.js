@@ -69,14 +69,14 @@ async function getMovieData(searchString) {
 
     /* Fetch data from OMDBAPI given the search string */
     try {
-        const response = await fetch(`https://www.omdbapi.com/?apikey=59354c85&s=${searchString}`);
+        const response = await fetch(`http://www.omdbapi.com/?apikey=59354c85&s=${searchString}`);
         const data = await response.json();
         movieData = data.Search;
 
         /* Get additional details for each movie for description property */
         for(let i=0; i < movieData.length; i++) {
             imdbid = movieData[i].imdbID;
-            response2 = await fetch(`https://www.omdbapi.com/?apikey=59354c85&i=${imdbid}`);
+            response2 = await fetch(`http://www.omdbapi.com/?apikey=59354c85&i=${imdbid}`);
             details = await response2.json();
             movieData[i].description = await details.Plot;
         }
