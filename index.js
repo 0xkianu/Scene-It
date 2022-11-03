@@ -121,10 +121,11 @@ myForm.addEventListener('submit', function(e){
 let checkAdded = (imdbID) => {
     let watchlistJSON = localStorage.getItem('watchlist');
     let watchlist = JSON.parse(watchlistJSON);
+    if(watchlist !== null) {
     for(let i = 0; i < watchlist.length; i++) {
         if(watchlist[i].imdbID === imdbID) {
             return false;
         }
-    }
+    }}
     return true;
 }
