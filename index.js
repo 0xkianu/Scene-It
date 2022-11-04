@@ -137,6 +137,7 @@ let checkAdded = (imdbID) => {
     return true;
 }
 
+/* Async function to fetch movie descriptions */
 async function getMovieDescription (imdbID, i) {
     let movieDescription = '';
     const response = await fetch(`https://www.omdbapi.com/?apikey=59354c85&i=${imdbID}`);
