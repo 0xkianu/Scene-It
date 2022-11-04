@@ -66,6 +66,7 @@ async function getMovieData(searchString) {
     let response2 = '';
     let details = '';
     let imdbid = '';
+    const promises = [];
 
     /* Fetch data from OMDBAPI given the search string */
     try {
@@ -75,13 +76,19 @@ async function getMovieData(searchString) {
 
         /* Get additional details for each movie for description property */
         for(let i=0; i < movieData.length; i++) {
-            imdbid = movieData[i].imdbID;
-            response2 = await fetch(`https://www.omdbapi.com/?apikey=59354c85&i=${imdbid}`);
-            details = await response2.json();
-            movieData[i].description = await details.Plot;
+            promises.push(getMovieDescription(movieData[i].imdbID, i));
         }
-    
-        renderMovies(movieData);
+
+        Promise.all(promises).then((movieDescription) => {
+            for (let i = 0; i < movieData.length; i++) {
+                movieData[parseInt(Object.keys(movieDescription[i]))].description = movieDescription[i][i];
+            }
+            renderMovies(movieData);
+        })
+        .catch((e) => {
+            console.log("There was a problem fetching movie description promises");
+        });
+        
     /* Catch any errors from try code */
     } catch (e) {
         console.log("There was a problem fetching movie data");
@@ -128,4 +135,12 @@ let checkAdded = (imdbID) => {
         }
     }}
     return true;
+}
+
+async function getMovieDescription (imdbID, i) {
+    let movieDescription = '';
+    const response = await fetch(`http://www.omdbapi.com/?apikey=59354c85&i=${imdbID}`);
+    const data = await response.json();
+    movieDescription = await data.Plot;
+    return await ({[i]:movieDescription});   
 }
