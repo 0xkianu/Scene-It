@@ -88,7 +88,7 @@ async function getMovieData(searchString) {
         .catch((e) => {
             console.log("There was a problem fetching movie description promises");
         });
-        
+
     /* Catch any errors from try code */
     } catch (e) {
         console.log("There was a problem fetching movie data");
@@ -139,7 +139,7 @@ let checkAdded = (imdbID) => {
 
 async function getMovieDescription (imdbID, i) {
     let movieDescription = '';
-    const response = await fetch(`http://www.omdbapi.com/?apikey=59354c85&i=${imdbID}`);
+    const response = await fetch(`https://www.omdbapi.com/?apikey=59354c85&i=${imdbID}`);
     const data = await response.json();
     movieDescription = await data.Plot;
     return await ({[i]:movieDescription});   
